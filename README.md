@@ -1,6 +1,8 @@
 # Crabwatch
 
-<img src="https://github.com/user-attachments/assets/294ad962-7ff5-45eb-930e-eab71996558a" width="200" />
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/294ad962-7ff5-45eb-930e-eab71996558a" width="200" />
+</p>
 
 A guide to building a Rust &amp; Raspberry Pi-based open-source monitoring
 station.
@@ -25,3 +27,4 @@ layout:
 - The [Resources](./resources/) folder contains interesting resources that
   helped me while designing and researching everything. Check it out if you
   ever need to dig deeper than what I've done on some aspects!
+- The [Sources](./sources/) folder contains the source code of the project.
