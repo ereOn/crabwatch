@@ -51,4 +51,4 @@ command does and why it is needed.
 
 ## Glossary
 
-- [Chapter 1 - Getting started!](./chapter-001/README.md)
+- [Chapter 1 - Getting started!](./01-getting-started/README.md)

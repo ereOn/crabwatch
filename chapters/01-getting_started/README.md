@@ -25,6 +25,7 @@ Let's get into it!
 4. [General purpose tools](#general-purpose-tools)
 5. [Clone this project](#clone-this-project)
 6. [Install Rust](#install-rust)
+7. [Create a new Rust project](#create-a-new-rust-project)
 
 ## Install a Raspberry Pi
 
@@ -118,19 +119,14 @@ sudo apt install -y build-essential git curl wget
 
 ### Clone this project
 
-You can now clone this project and start working on it. Run the following
-commands:
+You can now clone this project if you ever need some of its content as a
+reference. Run the following commands:
 
 ```bash
 mkdir -p ~/Projects
 cd ~/Projects
 git clone https://github.com/ereOn/crabwatch.git
-cd crabwatch
 ```
-
-From then on we will assume that you are operating in the
-`~/Projects/crabwatch` folder - or wherever you cloned the project - unless
-otherwise stated.
 
 ### Install Rust
 
@@ -170,6 +166,12 @@ rustc 1.80.1 (3f5fd8dd4 2024-08-06)
 as your are using a recent version of Rust - at least 1.80.1 - you should be
 fine.*
 
+Now is a good time to install some useful Rust-based tools:
+
+```bash
+cargo install just
+```
+
 We know need to install the cross-compilation toolchain for the Raspberry Pi.
 
 The instructions that follow, I took from this excellent [blog
@@ -193,4 +195,36 @@ Finally, add the toolchain to your path:
 ```bash
 echo 'export PATH=/opt/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf/bin:$PATH' >> ~/.zshrc
 source ~/.zshrc
+```
+
+And that's it! That should be it for the prerequisites. We can now move on to
+coding some Rust for the Raspberry Pi!
+
+### Create a new Rust project
+
+*Note: the result of this step can be found in the
+[`sources/chapters/01-getting_started`](/sources/chapters/01-getting-started)
+folder.*
+
+Create a new Rust project:
+
+```bash
+cargo new hello-raspberry
+cd hello-raspberry
+```
+
+Then configure it for cross-compilation:
+
+```bash
+mkdir .cargo
+cat <<EOF > .cargo/config
+[build]
+
+[target.armv7-unknown-linux-gnueabihf]
+linker = "arm-none-linux-gnueabihf-gcc"
+
+# Set default target for cargo build
+target = "armv7-unknown-linux-gnueabihf"
+rustflags = ["-C", "linker=arm-none-linux-gnueabihf-gcc"]
+EOF
 ```

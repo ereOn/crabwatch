@@ -27,4 +27,6 @@ layout:
 - The [Resources](./resources/) folder contains interesting resources that
   helped me while designing and researching everything. Check it out if you
   ever need to dig deeper than what I've done on some aspects!
-- The [Sources](./sources/) folder contains the source code of the project.
+- The [Sources](./sources/) folder contains the source code of the project. It is divided into two parts:
+    - The [Crabwatch](./sources/crabwatch) folder contains the main Rust project, which is the actual final code I use in my real-life project.
+    - The [Chapters](./sources/chapters) folder contains the code snippets that are used in the chapters. It is organized in a way that mirrors the chapters, so you can easily find the code that goes with a specific chapter.
