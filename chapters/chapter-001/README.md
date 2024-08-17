@@ -16,7 +16,13 @@ At the end of that chapter, we will have:
 
 Let's get into it!
 
-## Install a Raspberry Pi
+## Glossary
+
+1. [Install a Raspberry Pi](#install-a-raspberry-pi)
+2. [Install WSL on Windows](#install-wsl-on-windows)
+  1. [Oh-my-zsh](#oh-my-zsh)
+
+## 1 - Install a Raspberry Pi
 
 The first step is going to be to buy and setup a Raspberry Pi with basic
 network connectivity. If budget allows, I recommend getting the best model you
@@ -45,7 +51,7 @@ hooked it up to a monitor, you should be able to see its IP address briefly in
 the top right corner notification area. **Write it down: we will need it very
 soon**.
 
-## Install WSL on Windows
+## 2 - Install WSL on Windows
 
 If you haven't already, you will need to install WSL on your Windows machine.
 Follow the [official
@@ -60,7 +66,24 @@ You can check that everything is working by opening a terminal and running:
 $ lsb_release -a
 No LSB modules are available.
 Distributor ID: Ubuntu
-Description:    Ubuntu 22.04.4 LTS
-Release:        22.04
-Codename:       jammy
+Description:    Ubuntu 24.04.4 LTS
+Release:        24.04
+Codename:       noble
+```
+
+You may want to use the same version I'm using here to avoid any potential
+issue with packages versions.
+
+### 2.1 - Oh-my-zsh
+
+This step is **completely optional** but I highly recommend installing
+`oh-my-zsh` to have a more pleasant terminal experience.
+
+Check [the official guide](https://ohmyz.sh/#install) or simply run the
+following commands:
+
+```bash
+sudo apt update
+sudo apt install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
