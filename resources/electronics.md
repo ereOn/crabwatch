@@ -1,11 +1,24 @@
 # Electronics
 
-## GPIO
+## Raspberry Pi
+
+There is **plenty** of useful documentation on the Raspberry Pi so the goal
+here is **not** to write-up an exhaustive list of those, but rather to mention
+the particularly useful ones for our project.
 
 The Raspberry Pi in all its forms comes with a bunch of GPIO ports that can be
 used for various purposes.
 
-Piloting these ports was **traditionally** done through the use of
+One resource that I use **all the time** is the [Raspberry Pi
+Pinout](https://pinout.xyz) which gives - in the most satisfying UI/UX -
+detailed information about the GPIO pin layout for the Raspberry Pi. Very, very
+useful when hacking things around.
+
+In particular, don't confuse the GPIO pin number and the GPIO ports number.
+
+## GPIO
+
+Piloting the GPIO ports on Linux was **traditionally** done through the use of
 [SysFs](https://www.man7.org/linux/man-pages/man5/sysfs.5.html), like is
 explained in [this
 page](https://www.ics.com/blog/gpio-programming-using-sysfs-interface).
