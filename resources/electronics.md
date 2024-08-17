@@ -14,7 +14,12 @@ Pinout](https://pinout.xyz) which gives - in the most satisfying UI/UX -
 detailed information about the GPIO pin layout for the Raspberry Pi. Very, very
 useful when hacking things around.
 
-In particular, don't confuse the GPIO pin number and the GPIO ports number.
+![image](https://github.com/user-attachments/assets/47cbe1c3-6331-441b-94b1-5b5342d59dd2)
+
+In particular, don't confuse the GPIO pin number and the GPIO ports number. The
+little gray numbers right next to the little circle or square for each pin is
+the pin number. The GPIO port number is usually prefixed with the word "GPIO".
+The latter is usually the one you need when configuring something.
 
 ## GPIO
 
