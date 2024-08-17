@@ -20,9 +20,9 @@ Let's get into it!
 
 1. [Install a Raspberry Pi](#install-a-raspberry-pi)
 2. [Install WSL on Windows](#install-wsl-on-windows)
-  1. [Oh-my-zsh](#oh-my-zsh)
+    1. [Oh-my-zsh](#oh-my-zsh)
 
-## 1 - Install a Raspberry Pi
+## Install a Raspberry Pi
 
 The first step is going to be to buy and setup a Raspberry Pi with basic
 network connectivity. If budget allows, I recommend getting the best model you
@@ -51,7 +51,7 @@ hooked it up to a monitor, you should be able to see its IP address briefly in
 the top right corner notification area. **Write it down: we will need it very
 soon**.
 
-## 2 - Install WSL on Windows
+## Install WSL on Windows
 
 If you haven't already, you will need to install WSL on your Windows machine.
 Follow the [official
@@ -74,7 +74,7 @@ Codename:       noble
 You may want to use the same version I'm using here to avoid any potential
 issue with packages versions.
 
-### 2.1 - Oh-my-zsh
+### Oh-my-zsh
 
 This step is **completely optional** but I highly recommend installing
 `oh-my-zsh` to have a more pleasant terminal experience.
