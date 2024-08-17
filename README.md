@@ -20,6 +20,8 @@ There are multiple goals to this repository:
 This repository is organized in different sections. Here is an overview of the
 layout:
 
+- The [Chapters](./chapters/) folder contains the main content of the project.
+  This is likely where you want to start.
 - The [Resources](./resources/) folder contains interesting resources that
   helped me while designing and researching everything. Check it out if you
   ever need to dig deeper than what I've done on some aspects!
