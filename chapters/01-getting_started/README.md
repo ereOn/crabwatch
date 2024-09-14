@@ -221,15 +221,33 @@ rustup target add aarch64-unknown-linux-gnu # For the Raspberry Pi 5
 
 Then install the cross-compilation toolchain:
 
+For Raspberry Pi 3 & 4:
+
 ```bash
-wget -q -O- https://developer.arm.com/-/media/Files/downloads/gnu-a/10.3-2021.07/binrel/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf.tar.xz?rev=302e8e98351048d18b6f5b45d472f406&hash=95ED9EEB24EAEEA5C1B11BBA864519B2 | tar -x -C /opt/
+wget -q -O- https://developer.arm.com/-/media/Files/downloads/gnu-a/10.3-2021.07/binrel/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf.tar.xz?rev=302e8e98351048d18b6f5b45d472f406&hash=95ED9EEB24EAEEA5C1B11BBA864519B2 | sudo tar -x -C /opt/
 sudo chown -R root: /opt/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf
+```
+
+For Raspberry Pi 5:
+
+```bash
+wget -q -O- https://developer.arm.com/-/media/Files/downloads/gnu-a/10.3-2021.07/binrel/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu.tar.xz?rev=1cb9c51b94f54940bdcccd791451cec3&hash=B380A59EA3DC5FDC0448CA6472BF6B512706F8EC | sudo tar -Jx -C /opt/
+sudo chown -R root: /opt/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu
 ```
 
 Finally, add the toolchain to your path:
 
+For Raspberry Pi 3 & 4:
+
 ```bash
 echo 'export PATH=/opt/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf/bin:$PATH' >> ~/.zshrc
+source ~/.zshrc
+```
+
+For Raspberry Pi 5:
+
+```bash
+echo 'export PATH=/opt/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/bin:$PATH' >> ~/.zshrc
 source ~/.zshrc
 ```
 
@@ -256,11 +274,16 @@ mkdir .cargo
 cat <<EOF > .cargo/config
 [build]
 # Set default target for cargo build
-target = "armv7-unknown-linux-gnueabihf"
-rustflags = ["-C", "linker=arm-none-linux-gnueabihf-gcc"]
+#target = "armv7-unknown-linux-gnueabihf" # Raspberry Pi 3 & 4
+#rustflags = ["-C", "linker=arm-none-linux-gnueabihf-gcc"]
+target = "aarch64-unknown-linux-gnu" # Raspberry Pi 5
+rustflags = ["-C", "linker=aarch64-none-linux-gnueabihf-gcc"]
 
 [target.armv7-unknown-linux-gnueabihf]
 linker = "arm-none-linux-gnueabihf-gcc"
+
+[target.aarch64-unknown-linux-gnu]
+linker = "aarch64-none-linux-gnueabihf-gcc"
 EOF
 ```
 
@@ -271,12 +294,12 @@ Pi:
 cargo build # Or the shorter `cargo b`
 ```
 
-This will generate a binary in the `target/armv7-unknown-linux-gnueabihf/debug`
+This will generate a binary in the `target/aarch64-unknown-linux-gnueabihf/debug`
 folder which you can copy to your Raspberry Pi (**you will now need its IP
 address that you noted down earlier**):
 
 ```bash
-scp target/armv7-unknown-linux-gnueabihf/debug/hello-raspberry pi:
+scp target/aarch64-unknown-linux-gnueabihf/debug/hello-raspberry pi:
 ```
 
 You can now connect to your Raspberry Pi and run the binary:

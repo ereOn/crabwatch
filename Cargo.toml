@@ -1,0 +1,6 @@
+[workspace]
+resolver = "2"
+
+members = [
+	"sources/chapters/01-getting_started/hello-raspberry",
+]
