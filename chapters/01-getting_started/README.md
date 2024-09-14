@@ -97,6 +97,41 @@ You will be prompted to accept setting `zsh` as your default shell. Accept.
 
 Close and reopen your terminal and you should now have a nice prompt!
 
+### Set up SSH
+
+Your Raspberry Pi should be running and connected to your network.
+
+Edit the `~/.ssh/config` file and add the following lines:
+
+```bash
+Host pi
+    HostName <your-raspberry-ip>
+    User pi
+```
+
+**Replace `<your-raspberry-ip>` with the IP address you noted down earlier and
+adjust the username if you changed it during the Raspberry Pi setup.**
+
+Now we will generate an SSH key and copy its public part onto the Raspberry Pi
+to be able to connect to it without typing a password every time:
+
+```bash
+ssh-keygen -t rsa -b 4096
+ssh-copy-id pi
+```
+
+You will be prompted for the password of the `pi` user on the Raspberry Pi.
+Once the command is done, you should be able to connect to the Raspberry Pi
+without a password:
+
+```bash
+ssh pi
+hostname # This should print the hostname of your Raspberry Pi.
+```
+
+If that works, quit the SSH session by typing `exit` (or pressing `Ctrl+D`).
+You should now be back on your local machine, in your WSL terminal.
+
 ### IDE
 
 If you intend to use Visual Studio Code, you can install it now. It embeds a
@@ -169,7 +204,7 @@ fine.*
 Now is a good time to install some useful Rust-based tools:
 
 ```bash
-cargo install just
+cargo install just # A modern `make` replacement. I use it in this project.
 ```
 
 We know need to install the cross-compilation toolchain for the Raspberry Pi.
@@ -180,7 +215,8 @@ post](https://chacin.dev/blog/cross-compiling-rust-for-the-raspberry-pi/).
 First install the armv7 Rust toolchain:
 
 ```bash
-rustup target add armv7-unknown-linux-gnueabihf
+rustup target add armv7-unknown-linux-gnueabihf # For the Raspberry Pi 3 & 4
+rustup target add aarch64-unknown-linux-gnu # For the Raspberry Pi 5
 ```
 
 Then install the cross-compilation toolchain:
@@ -219,12 +255,34 @@ Then configure it for cross-compilation:
 mkdir .cargo
 cat <<EOF > .cargo/config
 [build]
-
-[target.armv7-unknown-linux-gnueabihf]
-linker = "arm-none-linux-gnueabihf-gcc"
-
 # Set default target for cargo build
 target = "armv7-unknown-linux-gnueabihf"
 rustflags = ["-C", "linker=arm-none-linux-gnueabihf-gcc"]
+
+[target.armv7-unknown-linux-gnueabihf]
+linker = "arm-none-linux-gnueabihf-gcc"
 EOF
+```
+
+And with this, you should be able to compile your Rust code for the Raspberry
+Pi:
+
+```bash
+cargo build # Or the shorter `cargo b`
+```
+
+This will generate a binary in the `target/armv7-unknown-linux-gnueabihf/debug`
+folder which you can copy to your Raspberry Pi (**you will now need its IP
+address that you noted down earlier**):
+
+```bash
+scp target/armv7-unknown-linux-gnueabihf/debug/hello-raspberry pi:
+```
+
+You can now connect to your Raspberry Pi and run the binary:
+
+```bash
+$ ssh pi
+$ ./hello-raspberry
+Hello, world!
 ```
