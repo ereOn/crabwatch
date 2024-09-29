@@ -3,4 +3,5 @@ resolver = "2"
 
 members = [
 	"sources/chapters/01-getting_started/hello-raspberry",
+	"sources/chapters/02-gpios/led-control",
 ]

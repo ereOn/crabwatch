@@ -45,3 +45,15 @@ the [libgpio](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/about/)
 library. Since we want to do that in Rust, we will likely have to integrate
 some [unsafe](https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html) code.
 Cool!
+
+## SPI & I2C
+
+Some of the GPIO ports can be used for more advanced protocols like SPI or I2C.
+
+SPI stands for Serial Peripheral Interface and is a synchronous serial data bus
+used to communicate with peripherals. It is commonly used to communicate with
+sensors, displays, and other devices.
+
+I2C stands for Inter-Integrated Circuit and is a multi-master, multi-slave,
+single-ended, serial computer bus. It is commonly used to communicate with
+sensors, displays, and other devices as well

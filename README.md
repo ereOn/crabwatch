@@ -7,6 +7,17 @@
 A guide to building a Rust &amp; Raspberry Pi-based open-source monitoring
 station.
 
+## What is a monitoring station?
+
+A monitoring station is a physical device that features different displays,
+indicators (like LEDs) and displays in real-time the status of a system or a
+service. It can be used to monitor the status of a server, a network, a
+service, or anything else that can be monitored.
+
+The goal here is not to build particular monitoring station, but to go through
+the steps of how I built mine, so you can build your own, or simply learn from
+it.
+
 ## Scope & Goals
 
 There are multiple goals to this repository:

@@ -1,0 +1,3 @@
+[submodule "sources/chapters/02-gpios/third-party/libgpiod"]
+	path = sources/chapters/02-gpios/third-party/libgpiod
+	url = https://github.com/brgl/libgpiod.git

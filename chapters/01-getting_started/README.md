@@ -295,8 +295,7 @@ cargo build # Or the shorter `cargo b`
 ```
 
 This will generate a binary in the `target/aarch64-unknown-linux-gnueabihf/debug`
-folder which you can copy to your Raspberry Pi (**you will now need its IP
-address that you noted down earlier**):
+folder which you can copy to your Raspberry Pi:
 
 ```bash
 scp target/aarch64-unknown-linux-gnueabihf/debug/hello-raspberry pi:
@@ -309,3 +308,9 @@ $ ssh pi
 $ ./hello-raspberry
 Hello, world!
 ```
+
+That's it! We cross-compiled and executed a Rust program on a Raspberry Pi! It
+doesn't do much yet, but it's a start!
+
+When you are ready, we will move on to the next chapter where we will start
+interfacing with the Raspberry Pi GPIOs.

@@ -8,3 +8,7 @@ linker = "arm-none-linux-gnueabihf-gcc"
 
 [target.aarch64-unknown-linux-gnu]
 linker = "aarch64-none-linux-gnu-gcc"
+
+[env]
+PKG_CONFIG_PATH_aarch64-unknown-linux-gnu = "/opt/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/lib/pkgconfig"
+PKG_CONFIG_SYSROOT_DIR_aarch64-unknown-linux-gnu = "/"
