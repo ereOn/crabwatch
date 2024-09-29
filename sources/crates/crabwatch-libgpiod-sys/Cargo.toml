@@ -1,0 +1,21 @@
+[package]
+name = "crabwatch-libgpiod-sys"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "crabwatch-gpio"
+path = "src/bin/main.rs"
+required-features = ["cli"]
+
+[features]
+default = []
+cli = ["dep:anyhow", "dep:clap"]
+
+[dependencies]
+anyhow = { version = "1.0", optional = true }
+clap = { version = "4", features = ["derive"], optional = true }
+libc = "0.2"
+
+[build-dependencies]
+pkg-config = "0.3"
